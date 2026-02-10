@@ -1,10 +1,8 @@
+#!/usr/bin/env python3
 """
-Galactic Adventure (Milestone #1)
+Galactic Adventure
 
-A small, inclusive, interactive sci-fi terminal game demonstrating:
-- 3 user stories with functional acceptance criteria
-- 8 Inclusivity Heuristics
-- 3 Quality Attributes (non-functional requirements)
+A small, inclusive, interactive sci-fi terminal game.
 """
 
 from dataclasses import dataclass
@@ -35,7 +33,7 @@ class GameState:
 
 
 # -----------------------------
-# UI Helper (Inclusivity)
+# UI Helper
 # -----------------------------
 
 class UI:
@@ -81,7 +79,7 @@ class UI:
 
 
 # -----------------------------
-# Reliability Helpers
+# Validation Helpers
 # -----------------------------
 
 def validate_name(name: str) -> Tuple[bool, str]:
@@ -103,49 +101,16 @@ def safe_int_choice(raw: str, valid: Dict[int, str]) -> Optional[int]:
 
 
 # -----------------------------
-# User Stories
-# -----------------------------
-
-USER_STORIES = [
-    {
-        "story": "As a player, I want to adjust accessibility settings so that I can comfortably read and navigate the game.",
-        "criteria": "Given I open Settings, when I enable large text or high contrast, then the interface updates immediately."
-    },
-    {
-        "story": "As a player, I want my mission decisions to affect resources so that my choices feel meaningful.",
-        "criteria": "Given I have power cells, when I boost the relay, then power cells decrease and progress is recorded."
-    },
-    {
-        "story": "As a player, I want the game to recover from mistakes so that invalid input does not break gameplay.",
-        "criteria": "Given I enter an invalid option, when the system detects it, then I am safely returned to the menu."
-    }
-]
-
-QUALITY_ATTRIBUTES = [
-    {
-        "name": "Accessibility / Usability",
-        "nfr": "The system shall allow users to change readability and motion preferences without restarting."
-    },
-    {
-        "name": "Reliability",
-        "nfr": "The system shall handle invalid input gracefully without crashing."
-    },
-    {
-        "name": "Maintainability",
-        "nfr": "The system shall separate UI, data models, and logic for ease of modification."
-    }
-]
-
-
-# -----------------------------
 # Informational Screens
 # -----------------------------
 
 def show_user_stories(ui: UI) -> None:
     ui.header("User Stories")
-    for i, item in enumerate(USER_STORIES, start=1):
-        ui.body(f"{i}) {item['story']}")
-        ui.body(f"   Acceptance Criterion:\n   {item['criteria']}\n")
+    ui.body(
+        "1) Adjust accessibility settings for comfortable reading.\n"
+        "2) Make mission choices that affect resources.\n"
+        "3) Recover safely from invalid input.\n"
+    )
 
 
 def show_inclusivity(ui: UI) -> None:
@@ -164,8 +129,11 @@ def show_inclusivity(ui: UI) -> None:
 
 def show_quality(ui: UI) -> None:
     ui.header("Quality Attributes")
-    for qa in QUALITY_ATTRIBUTES:
-        ui.body(f"{qa['name']}: {qa['nfr']}\n")
+    ui.body(
+        "Accessibility / Usability: Readability and motion options\n"
+        "Reliability: Graceful handling of invalid input\n"
+        "Maintainability: Clear separation of UI, logic, and data\n"
+    )
 
 
 # -----------------------------
